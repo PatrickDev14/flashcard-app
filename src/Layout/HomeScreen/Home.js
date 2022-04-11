@@ -23,7 +23,7 @@ function Home() {
 
   return (
     <div>
-      <Link to="/decks/new" className="btn btn-secondary" >
+      <Link to="/decks/new" className="btn btn-secondary btn-lg mb-2" >
         + Create a deck
       </Link>
       {decks.map((deck) => (

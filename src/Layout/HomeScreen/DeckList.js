@@ -24,29 +24,29 @@ function DeckList({ deck }) {
       <div className="card"> 
         <div className="card-body">
           <div className="row">
-            <h2 className="card-title">{name}</h2>
-            <p className="ml-auto">{cards.length} cards</p>
+            <h3 className="card-title ml-3">{name}</h3>
+            <p className="ml-auto mr-2">{cards.length} cards</p>
           </div>
           <div>
-            <p className="card-text">{description}</p>
+            <p className="card-text mb-2">{description}</p>
           </div>
           <div className="buttons">
             <button
               type="button"
-              className="btn btn-primary"              
+              className="btn btn-primary btn-lg"              
               onClick={() => history.push(`/decks/${id}`)}
             >
               view
             </button>
             <button
-              className="btn btn-success"
+              className="btn btn-success btn-lg ml-2"
               type="button"
               onClick={() => history.push(`/decks/${id}/study`)}
             >
               study
             </button>
             <button
-              className="btn btn-danger float-right"
+              className="btn btn-danger btn-lg float-right"
               type="button"
               onClick={deleteHandler}
             >
