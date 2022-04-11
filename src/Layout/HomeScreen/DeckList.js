@@ -33,20 +33,20 @@ function DeckList({ deck }) {
           <div className="buttons">
             <button
               type="button"
-              className="button button-primary"              
+              className="btn btn-primary"              
               onClick={() => history.push(`/decks/${id}`)}
             >
               view
             </button>
             <button
-              className="button button-study"
+              className="btn btn-success"
               type="button"
               onClick={() => history.push(`/decks/${id}/study`)}
             >
               study
             </button>
             <button
-              className="button button-delete float-right"
+              className="btn btn-danger float-right"
               type="button"
               onClick={deleteHandler}
             >

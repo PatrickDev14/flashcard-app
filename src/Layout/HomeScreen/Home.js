@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useHistory } from 'react-router-dom'
+import { useHistory } from "react-router-dom"
 import { listDecks } from "../../utils/api/index"
 import DeckList from './DeckList';
 
@@ -24,7 +24,7 @@ function Home() {
 
   return (
     <div>
-      <button className='button button-create' type='button' onClick={() => history.push(/decks/new)}>
+      <button className="btn btn-secondary" type='button' >
         + Create a deck
       </button>
       {decks.map((deck) => (
@@ -35,3 +35,5 @@ function Home() {
 }
 
 export default Home;
+
+{/* line 27 button  onClick={() => history.push(/decks/new)} */}
