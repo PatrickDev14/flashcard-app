@@ -4,7 +4,7 @@ import { deleteCard, readDeck, deleteDeck } from "../../utils/api";
 import TrashIcon from "../TrashIcon";
 
 function Deck() {
-  const [deck, setDeck] = useState([]);
+  const [deck, setDeck] = useState({});
   const { deckId } = useParams();
   const history = useHistory();
   const { url } = useRouteMatch();
@@ -50,29 +50,31 @@ function Deck() {
       </nav>
       <div className="card border-0">
         <div className="card-body">
+          <h4 className="row card-title mr-auto">{name}</h4>
+          <p className="row card-text mr-auto">{description}</p>
           <div className="row">
-            <h5 className="card-title">{name}</h5>
-          </div>
-          <p className="card-text">{description}</p>
-          <div className="row">
-            {/*<Link to={`/decks/${deckId}/edit`} className="btn btn-secondary">Edit</Link> */}
-            <Link to={`/decks/${deckId}/study`} className="btn btn-primary">Study</Link>
-            <Link to={`/decks/${deckId}/cards/new`} className="btn btn-primary">Add Cards</Link>
+            <Link to={`/decks/${deckId}/edit`} className="btn btn-secondary btn-lg">edit</Link>
+            <Link to={`/decks/${deckId}/study`} className="btn btn-success btn-lg ml-3">study</Link>
+            <Link to={`/decks/${deckId}/cards/new`} className="btn btn-primary btn-lg ml-3">
+              <i className="fa fa-plus"/>{" "}
+              add cards
+            </Link>
             <button
               onClick={deleteHandler}
               name="delete"
               value={id}
-              className="btn btn-danger float-right"
+              className="btn btn-danger btn-lg ml-auto"
             >
             <TrashIcon />
             </button>
           </div>
         </div>
       </div>
-      <div className="row">
+      <div className="row ml-auto">
         <h1>Cards</h1>
       </div>
-      {cards.map((card, index) => (
+      {deck.cards && 
+      cards.map((card, index) => (
         <div className="row" key={index}>
           <div className="col">
             <div className="card">
@@ -83,15 +85,15 @@ function Deck() {
               <div className="d-flex justify-content-end p-4">
                 <Link 
                   to={`${url}/cards/${card.id}/edit`}
-                  className="btn btn-secondary"
+                  className="btn btn-secondary btn-lg mr-3"
                   >
-                    Edit
+                    edit
                   </Link>
                   <button
                     onClick={async () => {
                       if(
                         window.confirm(
-                          "Are you sure you want to delete this card? You will not be able to recover it"
+                          "Are you sure you want to delete this card? \n\nYou will not be able to recover it."
                         )
                       ) {
                         await deleteCard(card.id);
@@ -102,9 +104,9 @@ function Deck() {
                     }}
                     name="deleteCard"
                     value="card.id"
-                    className="btn btn-danger"
+                    className="btn btn-danger btn-lg"
                   >
-                    Delete
+                    <TrashIcon />
                   </button>
               </div>
             </div>

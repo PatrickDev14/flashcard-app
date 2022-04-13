@@ -24,7 +24,8 @@ function Home() {
   return (
     <div>
       <Link to="/decks/new" className="btn btn-secondary btn-lg mb-2" >
-      + Create a deck
+        <i className="fa fa-plus" />{" "} 
+        Create a deck
       </Link>
       {decks.map((deck) => (
       <DeckList deck={deck} />

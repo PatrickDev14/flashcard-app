@@ -31,23 +31,23 @@ function DeckList({ deck }) {
         <div>
           <p className="card-text mb-2">{description}</p>
         </div>
-        <div className="buttons">
+        <div className="row d-flex">
           <button
             type="button"
-            className="btn btn-primary btn-lg"        
+            className="btn btn-primary btn-lg ml-3"        
             onClick={() => history.push(`/decks/${id}`)}
           >
             view
           </button>
           <button
-            className="btn btn-success btn-lg ml-2"
+            className="btn btn-success btn-lg ml-3"
             type="button"
             onClick={() => history.push(`/decks/${id}/study`)}
           >
             study
           </button>
           <button
-            className="btn btn-danger btn-lg float-right"
+            className="btn btn-danger btn-lg ml-auto mr-2"
             type="button"
             onClick={deleteHandler}
           >
