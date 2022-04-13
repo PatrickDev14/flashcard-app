@@ -12,10 +12,10 @@ function Home() {
     const abortController = new AbortController();
     (async () => {
       try {
-        const response = await listDecks(abortController.signal);
-        setDecks(response);
+      const response = await listDecks(abortController.signal);
+      setDecks(response);
       } catch (error) {
-        console.log(error);
+      console.log(error);
       }
     })();
     return () => abortController.abort();
@@ -24,7 +24,7 @@ function Home() {
   return (
     <div>
       <Link to="/decks/new" className="btn btn-secondary btn-lg mb-2" >
-        + Create a deck
+      + Create a deck
       </Link>
       {decks.map((deck) => (
       <DeckList deck={deck} />
