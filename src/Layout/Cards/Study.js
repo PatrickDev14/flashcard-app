@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { readDeck } from "../../utils/api/index.js";
 import ViewCards from "./ViewCards.js";
+import LoadingStatus from "../LoadingStatus.js";
 
 function Study() {
   const [deck, setDeck] = useState({});
@@ -18,7 +19,11 @@ function Study() {
     })();
   }, [deckId]);
   
-// if (Object.keys(deck).length) {
+if (!deck.cards) {
+  return (
+    <LoadingStatus />
+  )
+}
     //ui for nav, breadcrumb
   return (
     <div className="col-9 mx-auto">
@@ -39,12 +44,6 @@ function Study() {
       <ViewCards cards={deck.cards} />   
     </div>
   );
-  // } else {
-  //   //ui for spinner, status
-  //   <div className="spinner-border text-success" role="status">
-  //     <span className="sr-only">Loading...</span>
-  //   </div>
-//   }
 }
 
 export default Study;
