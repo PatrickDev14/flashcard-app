@@ -1,59 +1,51 @@
 import React, { useState, useEffect } from "react";
-import { Link, useHistory, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { createCard, readDeck } from "../../utils/api/index";
-//import CardForm from "../CardForm";
+import CardForm from "./CardForm";
 
-function AddCard(){
-  const history = useHistory();
-  const {deckId} = useParams();
+function AddCard() {
+  const { deckId } = useParams();
   const initialState = {
     front:"",
-    back: ""
+    back: "",
+    deckId: "",
   };
 
   const [newCard, setNewCard] = useState({...initialState});
   const [deck, setNewDeck] = useState({});
 
   useEffect(() => {
-    async function fetchData() {
-      const abortController = new AbortController();
+    const abortController = new AbortController();
+    (async () => {      
       try {
-          const response = await readDeck(deckId, abortController.signal);
-          setNewDeck(response);
-      } catch (error){
+        const response = await readDeck(deckId, abortController.signal);
+        setNewDeck(response);
+      } catch (error) {
           console.log(error);
       }
-      return () => {
-          abortController.abort();
-      };
-    }
-    fetchData();
+    })();
+    return () => abortController.abort();
   }, [deckId]);
 
   async function handleSubmit(event) {
     event.preventDefault();
-    const abortController = new AbortController();
-    const response = await createCard(
-      deckId,
-      {...newCard},
-      abortController.signal
-    );
-    history.go(0);
-    setNewCard(initialState);
-    return response;
-  }
-  
-  function changeFront(e) {
-    setNewCard({ ...newCard, front: e.target.value });
-  }
+    setNewCard({ ...newCard, deckId: deckId });
+    await createCard(deckId, newCard);
     
-    function changeBack(e) {
-    setNewCard({ ...newCard, back: e.target.value });
-  }
+    setNewCard(initialState);
+  };
+  
+  function changeFront(event) {
+    setNewCard({ ...newCard, front: event.target.value });
+  };
+    
+  function changeBack(event) {
+    setNewCard({ ...newCard, back: event.target.value });
+  };
 
     //ui
 
-    return (
+  return (
       <div>
         <ol className="breadcrumb">
           <li className="breadcrumb-item">
@@ -66,12 +58,13 @@ function AddCard(){
         </ol>
         
           <h2>{deck.name}: Add Card</h2>
-          {/* <CardForm
+          <CardForm
               submitHandler={handleSubmit}
               card={newCard}
               changeFront={changeFront}
               changeBack={changeBack}
-            /> */}
+              deckId={deckId}
+            />
       </div>
   )
 }
