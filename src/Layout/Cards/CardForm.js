@@ -1,16 +1,7 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function CardForm({ submitHandler, card = {}, changeFront, changeBack, deckId }) {
-  const history = useHistory();
-  
-  function cardFront() {
-    return card.front ? card.front : "";
-  }
-
-  function cardBack() {
-    return card.back ? card.back : "";
-  }
 
   return (
     <form id="cardForm">
@@ -20,7 +11,7 @@ function CardForm({ submitHandler, card = {}, changeFront, changeBack, deckId })
           className="form-control"
           id="front"
           rows="3"
-          value={cardFront()}
+          value={card.front ? card.front : ""}
           onChange={changeFront}
           placeholder="Front side of card"
         ></textarea>
@@ -31,7 +22,7 @@ function CardForm({ submitHandler, card = {}, changeFront, changeBack, deckId })
           className="form-control"
           id="back"
           rows="3"
-          value={cardBack()}
+          value={card.back ? card.back : ""}
           onChange={changeBack}
           placeholder="Back side of card"
         ></textarea>
@@ -43,13 +34,9 @@ function CardForm({ submitHandler, card = {}, changeFront, changeBack, deckId })
       >
         save
       </button>
-      <button
-        className="btn btn-secondary btn-lg ml-2"
-        type="button"
-        onClick={() => history.push(`/decks/${deckId}`)}
-      >
+      <Link to={`/decks/${deckId}`} className="btn btn-secondary btn-lg ml-2">
         done
-      </button>
+      </Link>
     </form>
   );
 }

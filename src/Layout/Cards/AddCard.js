@@ -43,28 +43,26 @@ function AddCard() {
     setNewCard({ ...newCard, back: event.target.value });
   };
 
-    //ui
-
   return (
       <div>
         <ol className="breadcrumb">
           <li className="breadcrumb-item">
-              <Link to="/">Home</Link>
+            <Link to="/">Home</Link>
           </li>
           <li className="breadcrumb-item">
-              <Link to={`/decks/${deckId}`}>{deck.name}</Link>
+            <Link to={`/decks/${deckId}`}>{deck.name}</Link>
           </li>
           <li className="breadcrumb-item active">Add Card</li>
         </ol>
         
           <h2>{deck.name}: Add Card</h2>
           <CardForm
-              submitHandler={handleSubmit}
-              card={newCard}
-              changeFront={changeFront}
-              changeBack={changeBack}
-              deckId={deckId}
-            />
+            submitHandler={handleSubmit}
+            card={newCard}
+            changeFront={changeFront}
+            changeBack={changeBack}
+            deckId={deckId}
+          />
       </div>
   )
 }
