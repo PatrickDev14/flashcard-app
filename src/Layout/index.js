@@ -7,7 +7,7 @@ import CreateDeck from "./Decks/CreateDeck";
 import Deck from "./Decks/Deck";
 import Study from "./Cards/Study";
 import AddCard from "./Cards/AddCard";  
-// import EditCard from "./Decks/EditCard"; edit these for file paths
+import EditCard from "./Cards/EditCard";
 // import EditDeck from "./Decks/EditDeck";
 
 function Layout() {
@@ -26,6 +26,7 @@ function Layout() {
       <Route exact path="/decks/:deckId">
         <Deck />
       </Route >
+
       <Route path="/decks/:deckId/study">
         <Study />
       </Route>
@@ -34,6 +35,9 @@ function Layout() {
       </Route>*/}
       <Route path="/decks/:deckId/cards/new">
         <AddCard />
+      </Route>
+      <Route path="/decks/:deckId/cards/:cardId/edit">
+        <EditCard />
       </Route>
       <NotFound />
     </Switch>
