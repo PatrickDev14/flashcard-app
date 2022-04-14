@@ -13,7 +13,7 @@ function CreateDeck() {
     history.push(`/decks/${response.id}`);
   };
 
-  const handleChange = (event) => {
+  function handleChange(event) {
     setNewDeck({ ...newDeck, [event.target.name]: event.target.value })
   };
 
@@ -24,7 +24,7 @@ function CreateDeck() {
         <Link to="/">Home</Link>
       </li>
       <li className="breadcrumb-item active">
-        Create Deck
+        Create a Deck
       </li>
     </ol>
     <form onSubmit={(event) => handleCreation(event)}>
@@ -49,14 +49,15 @@ function CreateDeck() {
           className="form-control"          
           onChange={handleChange}
           type="text"
-          rows="4"
           value={newDeck.description}
           placeholder="brief description of the deck"
         />
       </div>
-      <Link to="/">Cancel</Link>
+      <Link to="/" className="btn btn-secondary btn-lg">
+          Cancel
+        </Link>
       <button
-        className="btn btn-primary mx-auto"
+        className="btn btn-primary btn-lg ml-3"
         type="submit"
       >
         Submit
