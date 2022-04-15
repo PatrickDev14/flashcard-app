@@ -1,5 +1,5 @@
 import React from 'react';
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { deleteDeck } from "../../utils/api/index";
 import TrashIcon from "../TrashIcon.js";
 
@@ -21,40 +21,32 @@ function DeckList({ deck }) {
   }
 
   return (
-    <div key={id} >
+    <div>
       <div className="card"> 
-      <div className="card-body">
-        <div className="row">
-          <h3 className="card-title ml-3">{name}</h3>
-          <p className="ml-auto mr-2">{cards.length} cards</p>
+        <div className="card-body">
+          <div className="row">
+            <h3 className="card-title ml-3">{name}</h3>
+            <p className="ml-auto mr-2">{cards.length} cards</p>
+          </div>
+          <div>
+            <p className="card-text mb-2">{description}</p>
+          </div>
+          <div className="row">
+            <Link to={`/decks/${id}`} className="btn btn-primary btn-lg ml-3">
+              view
+            </Link>
+            <Link to={`/decks/${id}/study`} className="btn btn-success btn-lg ml-3">
+              study
+            </Link>
+            <button
+              className="btn btn-danger btn-lg ml-auto mr-2"
+              type="button"
+              onClick={deleteHandler}
+            >
+              <TrashIcon />
+            </button>
+          </div>
         </div>
-        <div>
-          <p className="card-text mb-2">{description}</p>
-        </div>
-        <div className="row d-flex">
-          <button
-            type="button"
-            className="btn btn-primary btn-lg ml-3"        
-            onClick={() => history.push(`/decks/${id}`)}
-          >
-            view
-          </button>
-          <button
-            className="btn btn-success btn-lg ml-3"
-            type="button"
-            onClick={() => history.push(`/decks/${id}/study`)}
-          >
-            study
-          </button>
-          <button
-            className="btn btn-danger btn-lg ml-auto mr-2"
-            type="button"
-            onClick={deleteHandler}
-          >
-            <TrashIcon />
-          </button>
-        </div>
-      </div>
       </div> 
     </div>
   );

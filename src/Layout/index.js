@@ -8,14 +8,13 @@ import Deck from "./Decks/Deck";
 import Study from "./Cards/Study";
 import AddCard from "./Cards/AddCard";  
 import EditCard from "./Cards/EditCard";
-// import EditDeck from "./Decks/EditDeck";
+import EditDeck from "./Decks/EditDeck";
 
 function Layout() {
   return (
   <div>
     <Header />
     <div className="container">
-    {/* TODO: Implement the screen starting here */}
     <Switch>
       <Route exact path="/">
         <Home />
@@ -26,13 +25,12 @@ function Layout() {
       <Route exact path="/decks/:deckId">
         <Deck />
       </Route >
-
       <Route path="/decks/:deckId/study">
         <Study />
       </Route>
-      {/*<Route path="/decks/:deckId/edit">
+      <Route path="/decks/:deckId/edit">
         <EditDeck />
-      </Route>*/}
+      </Route>
       <Route path="/decks/:deckId/cards/new">
         <AddCard />
       </Route>

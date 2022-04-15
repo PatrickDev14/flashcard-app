@@ -19,12 +19,12 @@ function Study() {
     })();
   }, [deckId]);
   
-if (!deck.cards) {
-  return (
-    <LoadingStatus />
-  )
-}
-    //ui for nav, breadcrumb
+  if (!deck.cards) {
+    return (
+      <LoadingStatus />
+    )
+  }
+
   return (
     <div className="col-9 mx-auto">
       <nav aria-label="breadcrumb">

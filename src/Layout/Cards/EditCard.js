@@ -13,12 +13,12 @@ function EditCard() {
     const abortController = new AbortController();
     ( async () => {
       try {
-      const deckResponse = await readDeck(deckId, abortController.signal);
-      setDeck(deckResponse);
-      const cardResponse = await readCard(cardId, abortController.signal);
-      setCard(cardResponse);
-    } catch (error) {
-      console.log(error);
+        const deckResponse = await readDeck(deckId, abortController.signal);
+        setDeck(deckResponse);
+        const cardResponse = await readCard(cardId, abortController.signal);
+        setCard(cardResponse);
+      } catch (error) {
+        console.log(error);
       }
     })();
     return () => abortController.abort();

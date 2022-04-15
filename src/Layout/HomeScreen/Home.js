@@ -12,10 +12,10 @@ function Home() {
     const abortController = new AbortController();
     (async () => {
       try {
-      const response = await listDecks(abortController.signal);
-      setDecks(response);
-      } catch (error) {
-      console.log(error);
+        const response = await listDecks(abortController.signal);
+        setDecks(response);
+        } catch (error) {
+        console.log(error);
       }
     })();
     return () => abortController.abort();
@@ -23,17 +23,19 @@ function Home() {
 
   return (
     <div>
-      <Link to="/decks/new" className="btn btn-secondary btn-lg mb-2" >
+      <Link to="/decks/new" className="btn btn-secondary btn-lg mb-2">
         <i className="fa fa-plus" />{" "} 
         Create a deck
       </Link>
       {decks.map((deck) => (
-      <DeckList deck={deck} />
+        <DeckList
+          deck={deck}
+          // unique key prop for each deck in the list
+          key={deck.id}   
+        />
       ))}
     </div>
   )
 }
 
 export default Home;
-
-// type='button' onClick={() => history.push(/decks/new)}

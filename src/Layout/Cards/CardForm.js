@@ -6,7 +6,7 @@ function CardForm({ submitHandler, card = {}, changeFront, changeBack, deckId })
   return (
     <form id="cardForm">
       <div className="form-group">
-        <label>Front</label>
+        <label htmlFor="card-front">Front</label>
         <textarea
           className="form-control"
           id="front"
@@ -17,7 +17,7 @@ function CardForm({ submitHandler, card = {}, changeFront, changeBack, deckId })
         ></textarea>
       </div>
       <div className="form-group">
-        <label>Back</label>
+        <label htmlFor="card-back">Back</label>
         <textarea
           className="form-control"
           id="back"
@@ -25,7 +25,7 @@ function CardForm({ submitHandler, card = {}, changeFront, changeBack, deckId })
           value={card.back ? card.back : ""}
           onChange={changeBack}
           placeholder="Back side of card"
-        ></textarea>
+        />
       </div>
       <button
         className="btn btn-primary btn-lg ml-2"

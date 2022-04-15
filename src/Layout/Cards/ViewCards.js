@@ -23,7 +23,6 @@ function ViewCards({ cards }) {
     }
   };
 
-  // !! Edit all;  add an Add button, add the jsx for Flip and Next buttons
   if (cards.length > 2) {
     return (
       <div className="row p-3">
@@ -37,12 +36,12 @@ function ViewCards({ cards }) {
               {frontSide ? cards[cardIndex].front : cards[cardIndex].back}
             </p>
 
-            <button onClick={handleFlip} className="btn btn-secondary mr-3">
+            <button onClick={handleFlip} className="btn btn-secondary btn-lg mr-3">
               Flip
             </button>
 
             {frontSide ? null : (
-              <button onClick={handleNextCard} className="btn btn-primary">
+              <button onClick={handleNextCard} className="btn btn-primary btn-lg">
                 Next
               </button>
             )}
@@ -51,7 +50,7 @@ function ViewCards({ cards }) {
       </div>
     );
   } 
-  else {
+  
     return (
       <div className="row p-3 w-100">
         <div className="card">
@@ -64,16 +63,15 @@ function ViewCards({ cards }) {
 
             <Link
               to={`/decks/${deckId}/cards/new`}
-              className="btn btn-primary ml-3"
+              className="btn btn-primary btn-lg ml-3"
             >
-              <i className="fa fa-plus" aria-hidden="true"></i>
+              <i className="fa fa-plus" />{" "}
               Add Cards
             </Link>
           </div>
         </div>
       </div>
     );
-  }
 }
 
 export default ViewCards;
