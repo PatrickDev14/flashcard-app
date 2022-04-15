@@ -1,21 +1,25 @@
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { createDeck } from "../../utils/api";
-// import DeckForm
+import DeckForm from "./DeckForm";
 
 function CreateDeck() {
   const [newDeck, setNewDeck] = useState({ name: "", description: "" });
   const history = useHistory();
 
-  async function handleCreation(event) {
+  async function handleDeckCreation(event) {
     event.preventDefault();
     const response = await createDeck(newDeck);
     history.push(`/decks/${response.id}`);
   };
 
-  function handleChange(event) {
-    setNewDeck({ ...newDeck, [event.target.name]: event.target.value })
+  function handleNameChange(event) {
+    setNewDeck({ ...newDeck, name: event.target.value })
   };
+
+  function handleDescChange(event) {
+    setNewDeck({ ...newDeck, description: event.target.value})
+  }
 
   return (
   <div>
@@ -24,45 +28,16 @@ function CreateDeck() {
         <Link to="/">Home</Link>
       </li>
       <li className="breadcrumb-item active">
-        Create a Deck
+        Create Deck
       </li>
     </ol>
-    <form onSubmit={(event) => handleCreation(event)}>
-      <h1>Create a Deck</h1>
-      <div className="form-group">
-        <label>Name</label>
-        <input
-          id="name"
-          name="name"
-          className="form-control"          
-          onChange={handleChange}
-          type="text"
-          value={newDeck.name}
-          placeholder="deck name"
-        />
-      </div>
-      <div className="form-group">
-      <label>Description</label>
-        <input
-          id="description"
-          name="description"
-          className="form-control"          
-          onChange={handleChange}
-          type="text"
-          value={newDeck.description}
-          placeholder="brief description of the deck"
-        />
-      </div>
-      <Link to="/" className="btn btn-secondary btn-lg">
-          Cancel
-        </Link>
-      <button
-        className="btn btn-primary btn-lg ml-3"
-        type="submit"
-      >
-        Submit
-      </button>      
-    </form>      
+    <h2>Create Deck</h2>
+    <DeckForm 
+      deck={newDeck} 
+      changeName={handleNameChange} 
+      changeDescription={handleDescChange}
+      submitHandler={handleDeckCreation} 
+      />
   </div>
   )
 }
