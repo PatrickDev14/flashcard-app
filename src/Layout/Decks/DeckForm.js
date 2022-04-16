@@ -5,7 +5,7 @@ function DeckForm({ deck={}, changeName, changeDescription, submitHandler }) {
   const history = useHistory();
 
   return (
-    <form>
+    <form onSubmit={submitHandler}>
       <div className="form-group">
         <label htmlFor="deck-name">Name</label>
         <input
@@ -43,7 +43,6 @@ function DeckForm({ deck={}, changeName, changeDescription, submitHandler }) {
       <button
         className="btn btn-primary btn-lg ml-3"
         type="submit"
-        onSubmit={submitHandler}
       >
         submit
       </button>      
