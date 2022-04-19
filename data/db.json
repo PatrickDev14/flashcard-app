@@ -12,7 +12,7 @@
     },
     {
       "name": "test driver 1",
-      "description": "this is a test of the Create Deck component",
+      "description": "This has tested the Create Deck, Edit Deck, Add Card, and Edit Card components.",
       "id": 3
     }
   ],
@@ -55,10 +55,16 @@
       "id": 7
     },
     {
-      "front": "Where do you pass a submit handler function in a React form?",
+      "front": "Where do you pass a submit handler function in a React form??",
       "back": "<form onSubmit={ /* your function here */ }>",
       "deckId": 3,
       "id": 8
+    },
+    {
+      "front": "revising",
+      "back": "brings surprises",
+      "deckId": 3,
+      "id": 9
     }
   ]
 }

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function CardForm({ submitHandler, card = {}, changeFront, changeBack, deckId }) {
 
   return (
-    <form id="cardForm">
+    <form id="cardForm" onSubmit={submitHandler}>
       <div className="form-group">
         <label htmlFor="card-front">Front</label>
         <textarea
@@ -14,7 +14,7 @@ function CardForm({ submitHandler, card = {}, changeFront, changeBack, deckId })
           value={card.front ? card.front : ""}
           onChange={changeFront}
           placeholder="Front side of card"
-        ></textarea>
+        />
       </div>
       <div className="form-group">
         <label htmlFor="card-back">Back</label>
@@ -29,8 +29,7 @@ function CardForm({ submitHandler, card = {}, changeFront, changeBack, deckId })
       </div>
       <button
         className="btn btn-primary btn-lg ml-2"
-        type="submit"
-        onClick={submitHandler}
+        type="submit"        
       >
         save
       </button>

@@ -11,18 +11,31 @@ function EditCard() {
 
   useEffect(() => {
     const abortController = new AbortController();
-    ( async () => {
+    async function getCardInfo() {
       try {
-        const deckResponse = await readDeck(deckId, abortController.signal);
-        setDeck(deckResponse);
         const cardResponse = await readCard(cardId, abortController.signal);
         setCard(cardResponse);
       } catch (error) {
         console.log(error);
       }
-    })();
+    };
+    getCardInfo();
     return () => abortController.abort();
-  }, [deckId, cardId]);
+  }, [cardId]);
+
+  useEffect(() => {
+    const abortController = new AbortController();
+    async function getDeckToEditCard() {
+      try {
+        const deckResponse = await readDeck(deckId, abortController.signal);
+        setDeck(deckResponse);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getDeckToEditCard();
+    return () => abortController.abort();
+  }, [deckId]);
 
   async function handleSubmit(event) {
     event.preventDefault();

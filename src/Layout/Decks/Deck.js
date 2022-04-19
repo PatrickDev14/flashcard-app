@@ -94,7 +94,7 @@ function Deck() {
                       onClick={async () => {
                         if(
                           window.confirm(
-                            "Are you sure you want to delete this card? You will not be able to recover it"
+                            "Are you sure you want to delete this card? \n\nYou will not be able to recover it."
                           )
                         ) {
                           await deleteCard(card.id);
