@@ -12,16 +12,17 @@ function Deck() {
 
   useEffect(() => {
     const abortController = new AbortController();
-    (async () => {
+    async function getDeckData() {
       try {
-        const response = await readDeck(deckId, abortController.signal);
-        setDeck(response);
+        const deckResponse = await readDeck(deckId, abortController.signal);
+        setDeck(deckResponse);
       } catch (error) {
-      console.log(error);
+        console.log(error);
       }
-    })();
+    };
+    getDeckData();
     return () => abortController.abort();
-  }, [deckId])
+  }, [deckId]);
 
   async function deleteDeckHandler() {
     if (

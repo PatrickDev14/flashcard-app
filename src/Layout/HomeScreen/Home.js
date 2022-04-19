@@ -10,16 +10,17 @@ function Home() {
   // use side effect to load decks and call listDecks from utils
   useEffect(() => {
     const abortController = new AbortController();
-    (async () => {
+    async function getDecks() {
       try {
         const response = await listDecks(abortController.signal);
         setDecks(response);
         } catch (error) {
         console.log(error);
       }
-    })();
+    };
+    getDecks();
     return () => abortController.abort();
-  }, [])
+  }, []);
 
   return (
     <div>

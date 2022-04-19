@@ -7,16 +7,19 @@ import LoadingStatus from "../LoadingStatus.js";
 function Study() {
   const [deck, setDeck] = useState({});
   const { deckId } = useParams();
-    // use side effect to load a selected deckId and call readDeck from utils
+
   useEffect(() => {
-    (async () => {
+    const abortController = new AbortController();
+    async function getDeckToStudy() {
       try {
-        const response = await readDeck(deckId);
-        setDeck(response);
+        const deckResponse = await readDeck(deckId, abortController.signal);
+        setDeck(deckResponse);
       } catch (error) {
-      console.log(error);
+        console.log(error);
       }
-    })();
+    };
+    getDeckToStudy();
+    return () => abortController.abort();
   }, [deckId]);
   
   if (!deck.cards) {

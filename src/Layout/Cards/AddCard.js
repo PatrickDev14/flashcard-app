@@ -12,18 +12,19 @@ function AddCard() {
   };
 
   const [newCard, setNewCard] = useState({...initialState});
-  const [deck, setNewDeck] = useState({});
+  const [deck, setDeck] = useState({});
 
   useEffect(() => {
     const abortController = new AbortController();
-    (async () => {      
+    async function getDeckToAddCard() {
       try {
-        const response = await readDeck(deckId, abortController.signal);
-        setNewDeck(response);
+        const deckResponse = await readDeck(deckId, abortController.signal);
+        setDeck(deckResponse);
       } catch (error) {
-          console.log(error);
+        console.log(error);
       }
-    })();
+    };
+    getDeckToAddCard();
     return () => abortController.abort();
   }, [deckId]);
 
