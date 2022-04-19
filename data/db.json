@@ -59,12 +59,6 @@
       "back": "<form onSubmit={ /* your function here */ }>",
       "deckId": 3,
       "id": 8
-    },
-    {
-      "front": "revising",
-      "back": "brings surprises",
-      "deckId": 3,
-      "id": 9
     }
   ]
 }

@@ -8,6 +8,7 @@ function CardForm({ submitHandler, card = {}, changeFront, changeBack, deckId })
       <div className="form-group">
         <label htmlFor="card-front">Front</label>
         <textarea
+          required
           className="form-control"
           id="front"
           rows="3"
@@ -19,6 +20,7 @@ function CardForm({ submitHandler, card = {}, changeFront, changeBack, deckId })
       <div className="form-group">
         <label htmlFor="card-back">Back</label>
         <textarea
+          required
           className="form-control"
           id="back"
           rows="3"

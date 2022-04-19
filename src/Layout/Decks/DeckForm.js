@@ -9,6 +9,7 @@ function DeckForm({ deck={}, changeName, changeDescription, submitHandler }) {
       <div className="form-group">
         <label htmlFor="deck-name">Name</label>
         <input
+          required
           id="name"
           name="name"
           className="form-control"          
@@ -21,6 +22,7 @@ function DeckForm({ deck={}, changeName, changeDescription, submitHandler }) {
       <div className="form-group">
       <label htmlFor="deck-description">Description</label>
         <textarea
+          required
           id="description"
           name="description"
           className="form-control"
